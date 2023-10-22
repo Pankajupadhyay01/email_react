@@ -3,19 +3,22 @@ import { createSlice } from '@reduxjs/toolkit'
 const userSlice = createSlice({
     name: 'mail',
     initialState: {
-        user: {}
-    },
+        mail:[],
+        err:false
+        },
     reducers: {
 
-        checkUser: state => {
-            state.user = true
+        updateMail: (state,action) => {
+            console.log(action.payload);
+            state.mail = action.payload
+            console.log(state.mail);
         },
 
-        Logout: state => {
-            state.user = false
+        updateErr: state => {
+            state.err = !state.err
         }
     }
 })
 
-export const { checkUser, Logout } = userSlice.actions
+export const { updateMail, updateErr } = userSlice.actions
 export default userSlice.reducer
